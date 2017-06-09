@@ -21,13 +21,13 @@ namespace ConsoleClient
             var baseAddress = "https://sandbox.chemadvisor.io/chem/rest/v2/";
 
             // set user_key header
-            var userKey = "YOURUSERKEY";
+            var userKey = "your_user_key";
 
             // set accept header: "application/xml", "application/json"
             var acceptHeader = "application/json";
 
             // set api
-            var api = "lists";
+            var resource = "lists";
 
             // set query parameters: q, limit, offset
             var q = Uri.EscapeUriString("{\"tags.tag.name\":\"Government Inventory Lists\"}");
@@ -36,10 +36,9 @@ namespace ConsoleClient
 
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri(baseAddress);
-            client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(acceptHeader));
             client.DefaultRequestHeaders.Add("user_key", userKey);
-            var response = await client.GetAsync(string.Format("{0}?q={1}&limit={2}&offset={3}", api, q, limit, offset));
+            var response = await client.GetAsync(string.Format("{0}?q={1}&limit={2}&offset={3}", resource, q, limit, offset));
 
             if (response.IsSuccessStatusCode)
             {
