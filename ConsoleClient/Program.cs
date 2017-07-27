@@ -29,8 +29,8 @@ namespace ConsoleClient
             // set accept header: "application/xml", "application/json"
             var acceptHeader = "application/json";
 
-            // set api
-            var api = "lists";
+            // set resource
+            var resource = "lists";
 
             // set query parameters: q, limit, offset
             var q = Uri.EscapeUriString("{\"tags.tag.name\":\"Government Inventory Lists\"}");
@@ -42,7 +42,7 @@ namespace ConsoleClient
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(acceptHeader));
             client.DefaultRequestHeaders.Add("app_key", appKey);
             client.DefaultRequestHeaders.Add("app_id", appId);
-            var response = await client.GetAsync(string.Format("{0}?q={1}&limit={2}&offset={3}", api, q, limit, offset));
+            var response = await client.GetAsync(string.Format("{0}?q={1}&limit={2}&offset={3}", resource, q, limit, offset));
 
             if (response.IsSuccessStatusCode)
             {
