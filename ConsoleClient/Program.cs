@@ -20,13 +20,16 @@ namespace ConsoleClient
             // set base address
             var baseAddress = "https://sandbox.chemadvisor.io/chem/rest/v2/";
 
-            // set user_key header
-            var userKey = "your_user_key";
+            // set app_key header
+            var appKey = "your_app_key";
+
+            // set app_id header
+            var appId = "your_app_id";
 
             // set accept header: "application/xml", "application/json"
             var acceptHeader = "application/json";
 
-            // set api
+            // set resource
             var resource = "lists";
 
             // set query parameters: q, limit, offset
@@ -37,7 +40,8 @@ namespace ConsoleClient
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri(baseAddress);
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(acceptHeader));
-            client.DefaultRequestHeaders.Add("user_key", userKey);
+            client.DefaultRequestHeaders.Add("app_key", appKey);
+            client.DefaultRequestHeaders.Add("app_id", appId);
             var response = await client.GetAsync(string.Format("{0}?q={1}&limit={2}&offset={3}", resource, q, limit, offset));
 
             if (response.IsSuccessStatusCode)
