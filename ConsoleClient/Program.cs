@@ -27,7 +27,7 @@ namespace ConsoleClient
             var acceptHeader = "application/json";
 
             // set api
-            var resource = "lists";
+            var resource = "regulatory_lists";
 
             // set query parameters: q, limit, offset
             var q = Uri.EscapeUriString("{\"tags.tag.name\":\"Government Inventory Lists\"}");
